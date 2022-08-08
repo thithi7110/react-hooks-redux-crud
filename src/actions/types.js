@@ -1,3 +1,6 @@
+/**
+ * アクション用のType
+ */
 export const CREATE_TUTORIAL = "CREATE_TUTORIAL";
 export const RETRIEVE_TUTORIALS = "RETRIEVE_TUTORIALS";
 export const UPDATE_TUTORIAL = "UPDATE_TUTORIAL";

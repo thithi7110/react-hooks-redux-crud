@@ -12,17 +12,17 @@ function App() {
     <Router>
       <nav className="navbar navbar-expand navbar-dark bg-dark">
         <a href="/tutorials" className="navbar-brand">
-          bezKoder
+          ISDWEBアプリ
         </a>
         <div className="navbar-nav mr-auto">
           <li className="nav-item">
             <Link to={"/tutorials"} className="nav-link">
-              Tutorials
+              チュートリアル
             </Link>
           </li>
           <li className="nav-item">
             <Link to={"/add"} className="nav-link">
-              Add
+              登録
             </Link>
           </li>
         </div>
