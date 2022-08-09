@@ -43,16 +43,16 @@ const Jyuc001 = () => {
   const handleBlur = event => {
     const { name, value } = event.target;
     switch(name){
-      case "customTextTanka1":
+      case "tanka":
         calckingaku(inputdata.tanka,inputdata.suryo);
       ;
-      case "customTextSuryo1":
+      case "suryo":
         calckingaku(inputdata.tanka,inputdata.suryo);
       ;
-      case "customTextKingaku1":
+      case "kingaku":
       ;
       default:
-        console.log("");
+        console.log(inputdata.kingaku);
       ;
     }
   };
@@ -100,10 +100,10 @@ const Jyuc001 = () => {
         <div>
           <DataAccessName msttype="tokui" id="tokuiname1"/>
           <DataAccessName msttype="shohin" id="shohinname1"/>
-          <CustomTextSimple />
-          <label htmlFor="customTextTanka1">単価</label><CustomTextSimple id="customTextTanka1" name="customTextTanka1" value={inputdata.tanka} onBlur={handleBlur} onChange={handleInputChange}/>
-          <label htmlFor="customTextSuryo1">数量</label><CustomTextSimple id="customTextSuryo1" name="customTextSuryo1" value={inputdata.suryo} onBlur={handleBlur} onChange={handleInputChange}/>
-          <label htmlFor="customTextKingaku1">金額</label><CustomTextSimple id="customTextKingaku1" name="customTextKingaku1" value={inputdata.kingaku} onBlur={handleBlur} onChange={handleInputChange}/>
+          <div><label htmlFor="customTextTanka1">単価</label><CustomTextSimple id="customTextTanka1" name="tanka" value={inputdata.tanka} onCustomBlur={handleBlur} onCustomChange={handleInputChange}/></div>
+          <div><label htmlFor="customTextSuryo1">数量</label><CustomTextSimple id="customTextSuryo1" name="suryo" value={inputdata.suryo} onCustomBlur={handleBlur} onCustomChange={handleInputChange}/></div>
+          <div><label htmlFor="customTextKingaku1">金額</label><CustomTextSimple id="customTextKingaku1" name="kingaku" value={inputdata.kingaku} onCustomBlur={handleBlur} onCustomChange={handleInputChange}/></div>
+          <p>{inputdata.kingaku}</p>
           <div className="form-group">
             <label htmlFor="title">Title</label>
             <input

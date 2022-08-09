@@ -10,21 +10,21 @@
      const onChange = (event) => {
       setValue(event.target.value);
 
-          if(!!props.onChange){
-            props.onChange(event);
+          if(!!props.onCustomChange){
+            props.onCustomChange(event);
           }
 
      };
 
      const onBlur = (event) => {
-        if(!!props.onBlur){
-          props.onBlur(event);
+        if(!!props.onCustomBlur){
+          props.onCustomBlur(event);
         }
      }
   
      return (
      <>
-        <input id={props.id} type="text" value={value} name={props.name} onChange={onChange} onBlur={onBlur}/>
+        <input id={props.id} type="text" value={props.value} name={props.name} onChange={onChange} onBlur={onBlur}/>
      </>
      );
  }
