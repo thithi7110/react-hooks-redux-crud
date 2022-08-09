@@ -1,3 +1,9 @@
+/**
+ * アクション
+ * componentから呼ばれる
+*/
+
+//アクションタイプからimport
 import {
   CREATE_TUTORIAL,
   RETRIEVE_TUTORIALS,
@@ -6,12 +12,16 @@ import {
   DELETE_ALL_TUTORIALS,
 } from "./types";
 
+//サーバ側のサービスimport
 import TutorialDataService from "../services/TutorialService";
 
+//チュートリアル登録処理
 export const createTutorial = (title, description) => async (dispatch) => {
   try {
+    //サーバ側のサービスの非同期呼び出し、引数に登録内容
     const res = await TutorialDataService.create({ title, description });
 
+    //state変更のためにreducersに渡す
     dispatch({
       type: CREATE_TUTORIAL,
       payload: res.data,
