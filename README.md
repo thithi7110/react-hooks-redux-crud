@@ -12,4 +12,4 @@ and read Readme
 
 npm init
 
-npm start
+npm run start
