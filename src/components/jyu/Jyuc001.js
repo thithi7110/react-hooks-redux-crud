@@ -100,9 +100,9 @@ const Jyuc001 = () => {
         <div>
           <DataAccessName msttype="tokui" id="tokuiname1"/>
           <DataAccessName msttype="shohin" id="shohinname1"/>
-          <div><label htmlFor="customTextTanka1">単価</label><CustomTextSimple id="customTextTanka1" name="tanka" value={inputdata.tanka} onCustomBlur={handleBlur} onCustomChange={handleInputChange}/></div>
-          <div><label htmlFor="customTextSuryo1">数量</label><CustomTextSimple id="customTextSuryo1" name="suryo" value={inputdata.suryo} onCustomBlur={handleBlur} onCustomChange={handleInputChange}/></div>
-          <div><label htmlFor="customTextKingaku1">金額</label><CustomTextSimple id="customTextKingaku1" name="kingaku" value={inputdata.kingaku} onCustomBlur={handleBlur} onCustomChange={handleInputChange}/></div>
+          <div><label htmlFor="customTextTanka1">単価</label><CustomTextSimple id="customTextTanka1" name="tanka" value={inputdata.tanka} onBlur={handleBlur} onChange={handleInputChange}/></div>
+          <div><label htmlFor="customTextSuryo1">数量</label><CustomTextSimple id="customTextSuryo1" name="suryo" value={inputdata.suryo} onBlur={handleBlur} onChange={handleInputChange}/></div>
+          <div><label htmlFor="customTextKingaku1">金額</label><CustomTextSimple id="customTextKingaku1" name="kingaku" value={inputdata.kingaku} onBlur={handleBlur} onChange={handleInputChange}/></div>
           <p>{inputdata.kingaku}</p>
           <div className="form-group">
             <label htmlFor="title">Title</label>

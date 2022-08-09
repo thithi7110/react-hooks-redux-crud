@@ -67,7 +67,7 @@
 
      return (
      <>
-        <label htmlFor={props.id}>{title}</label><CustomTextSimple id={props.id} onCustomBlur={onBlur} onCustomChange={onChange}/><p>{name}</p>
+        <label htmlFor={props.id}>{title}</label><CustomTextSimple id={props.id} onBlur={onBlur} onChange={onChange}/><p>{name}</p>
      </>
      );
  }

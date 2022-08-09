@@ -10,15 +10,15 @@
      const onChange = (event) => {
       setValue(event.target.value);
 
-          if(!!props.onCustomChange){
-            props.onCustomChange(event);
+          if(!!props.onChange){
+            props.onChange(event);
           }
 
      };
 
      const onBlur = (event) => {
-        if(!!props.onCustomBlur){
-          props.onCustomBlur(event);
+        if(!!props.onBlur){
+          props.onBlur(event);
         }
      }
   
