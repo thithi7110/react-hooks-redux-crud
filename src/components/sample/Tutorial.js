@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { updateTutorial, deleteTutorial } from "../actions/tutorials";
-import TutorialDataService from "../services/TutorialService";
+import { updateTutorial, deleteTutorial } from "../../actions/tutorials";
+import TutorialDataService from "../../services/TutorialService";
 
 const Tutorial = (props) => {
   const initialTutorialState = {

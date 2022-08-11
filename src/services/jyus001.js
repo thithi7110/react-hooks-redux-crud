@@ -1,31 +1,31 @@
 import http from "../http-common";
 
 const getAll = () => {
-  return http.get("/tutorials/jyu/jyu");
+  return http.get("/jyu/jyu");
 };
 
 const get = id => {
-  return http.get(`/tutorials/jyu/${id}`);
+  return http.get(`/jyu/${id}`);
 };
 
 const create = data => {
-  return http.post("/tutorials/jyu", data);
+  return http.post("/jyu", data);
 };
 
 const update = (id, data) => {
-  return http.put(`/tutorials/jyu/${id}`, data);
+  return http.put(`/jyu/${id}`, data);
 };
 
 const remove = id => {
-  return http.delete(`/tutorials/jyu/${id}`);
+  return http.delete(`/jyu/${id}`);
 };
 
 const removeAll = () => {
-  return http.delete(`/tutorials/jyu`);
+  return http.delete(`/jyu`);
 };
 
-const findByTitle = title => {
-  return http.get(`/tutorials/jyu?title=${title}`);
+const findById = id => {
+  return http.get(`/jyu?id=${id}`);
 };
 
 const jyus001 = {
@@ -35,7 +35,7 @@ const jyus001 = {
   update,
   remove,
   removeAll,
-  findByTitle
+  findById
 };
 
 export default jyus001;

@@ -4,7 +4,7 @@ import {
   retrieveTutorials,
   findTutorialsByTitle,
   deleteAllTutorials,
-} from "../actions/tutorials";
+} from "../../actions/tutorials";
 import { Link } from "react-router-dom";
 
 const TutorialsList = () => {

@@ -3,7 +3,7 @@
  */
  import React,{useState } from "react";
  
- const CustomTextSimple = (props) => {
+ const CustomTextSimple = React.forwardRef((props, ref) => {  
 
      const [value, setValue] = useState(props.value);
          
@@ -24,9 +24,10 @@
   
      return (
      <>
-        <input id={props.id} type="text" value={props.value} name={props.name} onChange={onChange} onBlur={onBlur}/>
+        <input ref={ref} className={props.classname} id={props.id} type="text" value={props.value} name={props.id} onChange={onChange} onBlur={onBlur}
+        />
      </>
      );
- }
+ })
  
  export default CustomTextSimple;

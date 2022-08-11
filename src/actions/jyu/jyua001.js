@@ -15,10 +15,12 @@ import {
 import jyus001 from "../../services/jyus001";
 
 //チュートリアル登録処理
-export const addJyuchuInf = (title, description) => async (dispatch) => {
+export const addJyuchuInf = (inputdata) => async (dispatch) => {
   try {
     //サーバ側のサービスの非同期呼び出し、引数に登録内容
-    const res = await jyus001.create({ title, description });
+    const res = await jyus001.create({ 
+      ...inputdata
+    });
 
     //state変更のためにreducersに渡す
     dispatch({
@@ -73,14 +75,16 @@ export const deleteTutorial = (id) => async (dispatch) => {
   }
 };
 
-export const JYUAT001_GETBYID = (title) => async (dispatch) => {
+export const getDataById = (id) => async (dispatch) => {
   try {
-    const res = await jyus001.findByTitle(title);
+    const res = await jyus001.findById(id);
 
     dispatch({
       type: JYUAT001_GET,
       payload: res.data,
     });
+
+    
   } catch (err) {
     console.log(err);
   }

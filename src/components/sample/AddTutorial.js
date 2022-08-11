@@ -3,10 +3,10 @@
 */
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { createTutorial } from "../actions/tutorials";
-import CustomText from "./common/CustomText";
-import CustomTextSimple from "./common/CustomTextSimple";
-import CustomTextHook from "./common/CustomTextHook";
+import { createTutorial } from "../../actions/tutorials";
+import CustomText from "../common/CustomText";
+import CustomTextSimple from "../common/CustomTextSimple";
+import CustomTextHook from "../common/CustomTextHook";
 
 const AddTutorial = () => {
   //初期ステートの定義
