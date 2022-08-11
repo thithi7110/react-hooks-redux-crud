@@ -20,9 +20,9 @@ function App() {
   var swithelm = [];
   //TBD権限に合わせ外部から取得?
   const menudata = [
-    {path:"/tutorials",swithpath:["/", "/tutorials"],title:"チュートリアル",component:TutorialsList},
-    {path:"/add",swithpath:"/add",title:"登録",component:AddTutorial},
-    {path:"/Sample001",swithpath:"/Sample001",title:"受注入力",component:Sample001},
+    // {path:"/tutorials",swithpath:["/", "/tutorials"],title:"チュートリアル",component:TutorialsList},
+    // {path:"/add",swithpath:"/add",title:"登録",component:AddTutorial},
+    // {path:"/Sample001",swithpath:"/Sample001",title:"受注入力",component:Sample001},
     {path:"/Jyuc001",swithpath:"/Jyuc001",title:"受注入力",component:Jyuc001},
   ];
 

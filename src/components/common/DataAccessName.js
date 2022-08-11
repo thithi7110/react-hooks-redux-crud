@@ -90,8 +90,10 @@ const DataAccessName = React.forwardRef((props, ref) => {
 
    return (
       <>
-         <label htmlFor={props.id}>{title}</label><CustomTextSimple id={props.id} value={props.value} name={props.name} onBlur={onBlur} onChange={onChange} ref={!!ref ? ref : null} /><p>{inputdata.name}</p>
-         {/* <CustomModal modaldata={modaldata}/> */}
+         <div>
+            <label htmlFor={props.id}>{title}</label><CustomTextSimple id={props.id} value={props.value} name={props.name} onBlur={onBlur} onChange={onChange} ref={!!ref ? ref : null} /><p className="dataaccessname-name">{inputdata.name}</p>
+            {/* <CustomModal modaldata={modaldata}/> */}
+         </div>
       </>
    );
 })

@@ -178,9 +178,9 @@ const Jyuc001 = (props) => {
       {/* 登録済かで切り替える */}
       {submitted ? (
         <div>
-          <h4>You submitted successfully!</h4>
+          <h4>登録・更新完了</h4>
           <button className="btn btn-success" onClick={newdata}>
-            Add
+            戻る
           </button>
         </div>
       ) : (
