@@ -3,7 +3,7 @@
  * コードのblurで名称を取得、rowデータとして保持
  * 親コンポーネントにも渡す
  */
-import React, { useState, useEffect } from "react";
+import React, { useRef,useState, useEffect, useImperativeHandle } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SET_TEXT } from "../../actions/types";
 import { saveCustomTextData } from "../../actions/common";
@@ -16,16 +16,18 @@ import CustomModal from "./CustomModal";
 const DataAccessName = React.forwardRef((props, ref) => {
    //初期ステートの定義
    const initialState = {
-      code: "",
-      rows: [],
-      name: "",
-      modaldata: [],
-      saveValue: "",
+      code:{ name: "code", value: "", ref: useRef(null), tabindex: 0 },
+      name:{ name: "name", value: "", ref: useRef(null), tabindex: 0 },
+      rows:{ name: "rows", value: [] },
+      modaldata:{ name: "modaldata", value: [] },
+      saveValue:{ name: "saveValue", value: "" },
    };
    const [inputdata, setInputdata] = useState(initialState);
    const setData = (name, value) => {
-      setInputdata({ ...inputdata, [name]: value });
+      inputdata[name].value = value;
+      setInputdata({ ...inputdata});
    }
+
 
    //storeから取得
    const statecommon = useSelector(state => state.common);
@@ -48,8 +50,8 @@ const DataAccessName = React.forwardRef((props, ref) => {
    }
 
    const onBlur = (event) => {
-      if (!inputdata.saveValue ||
-         inputdata.saveValue !== event.target.value) {
+      if (!inputdata.saveValue.value ||
+         inputdata.saveValue.value !== event.target.value) {
 
          getData(event.target.value)
          setData('saveValue', event.target.value);
@@ -68,7 +70,7 @@ const DataAccessName = React.forwardRef((props, ref) => {
       if (props.msttype == 'shohin') {
          DataAccessNameService.findByShohinCd(code)
             .then(response => {
-               setData('row', response.data);
+               setData('rows', response.data);
                console.log(response.data);
                setData('name', response.data[0].shohinname);
             })
@@ -78,7 +80,7 @@ const DataAccessName = React.forwardRef((props, ref) => {
       } else if (props.msttype == 'tokui') {
          DataAccessNameService.findByTokuiCd(code)
             .then(response => {
-               setData('row', response.data);
+               setData('rows', response.data);
                console.log(response.data);
                setData('name', response.data[0].tokuiname);
             })
@@ -88,10 +90,25 @@ const DataAccessName = React.forwardRef((props, ref) => {
       }
    }
 
+
+   //親から呼び出せるようにしたファンクション
+   useImperativeHandle(ref, () => ({
+      // `focus()`メソッドを作っている
+      focus: () => { 
+         inputdata.code.ref.current.focus();
+      },
+      getAlert() {
+         alert("getAlert from Child");
+      },
+      getDataFromParent(code) {
+         getData(code);
+      }
+
+   }));
    return (
       <>
          <div>
-            <label htmlFor={props.id}>{title}</label><CustomTextSimple id={props.id} value={props.value} name={props.name} onBlur={onBlur} onChange={onChange} ref={!!ref ? ref : null} /><p className="dataaccessname-name">{inputdata.name}</p>
+            <label htmlFor={props.id}>{title}</label><CustomTextSimple id={props.id} value={props.value} name={props.name} onBlur={onBlur} onChange={onChange} ref={inputdata.code.ref} /><p className="dataaccessname-name">{inputdata.name.value}</p>
             {/* <CustomModal modaldata={modaldata}/> */}
          </div>
       </>

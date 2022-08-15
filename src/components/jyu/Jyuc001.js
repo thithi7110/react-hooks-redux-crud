@@ -95,6 +95,9 @@ const Jyuc001 = (props) => {
 
     setInputdata({ ...inputdata });
 
+    //if(!!inputdata.tokuicd.ref.current) inputdata.tokuicd.ref.current.getAlert()
+
+
     jyus001.findById(inputdata.id.value)
       .then(response => {
 
@@ -103,7 +106,9 @@ const Jyuc001 = (props) => {
         if (!!response.data && response.data.length > 0) {
           var row = response.data[0];
           inputdata.tokuicd.value = row.tokuicd;
+          if(!!inputdata.tokuicd.ref.current) inputdata.tokuicd.ref.current.getDataFromParent(inputdata.tokuicd.value)
           inputdata.shincd.value = row.shincd;
+          if(!!inputdata.shincd.ref.current) inputdata.shincd.ref.current.getDataFromParent(inputdata.shincd.value)
           inputdata.jyuchuymd.value = formatDateToText(row.jyuchuymd);
           inputdata.suryo.value = row.suryo;
           inputdata.situryo.value = row.situryo;
@@ -112,6 +117,8 @@ const Jyuc001 = (props) => {
           inputdata.kingaku.value = row.kingaku;
 
           setInputdata({ ...inputdata });
+
+          
         }
 
       })
