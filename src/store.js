@@ -5,7 +5,6 @@ import { createStore, applyMiddleware,compose } from 'redux';
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from 'redux-thunk';//非同期処理用
 import rootReducer from './reducers';
-import ReactDOM from 'react-dom';
 
 const initialState = {};
 
