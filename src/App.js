@@ -66,21 +66,30 @@ function App() {
 
     <>
       {!isAuthenticated ? (
-        <button onClick={loginWithRedirect}>Log in</button>
-      ) : (
         <div>
-          <button
-            onClick={() => {
-              logout({ returnTo: window.location.origin });
-            }}
-          >
-            Log out
-          </button>
           <Router>
             <nav className="navbar navbar-expand navbar-dark bg-dark">
-              <a href="/tutorials" className="navbar-brand">
+              <a href="/" className="navbar-brand">
                 〇〇システム
               </a>
+              <button onClick={loginWithRedirect}>Log in</button>
+            </nav>
+          </Router>
+        </div>
+      ) : (
+        <div>
+          <Router>
+            <nav className="navbar navbar-expand navbar-dark bg-dark">
+              <a href="/" className="navbar-brand">
+                〇〇システム
+              </a>
+              <button
+                onClick={() => {
+                  logout({ returnTo: window.location.origin });
+                }}
+              >
+                Log out
+              </button>
               <div className="navbar-nav mr-auto">
                 {routeselm}
               </div>
