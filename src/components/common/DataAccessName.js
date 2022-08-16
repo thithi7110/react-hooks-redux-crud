@@ -3,7 +3,7 @@
  * コードのblurで名称を取得、rowデータとして保持
  * 親コンポーネントにも渡す
  */
-import React, { useRef,useState, useEffect, useImperativeHandle } from "react";
+import React, { useRef, useState, useEffect, useImperativeHandle } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SET_TEXT } from "../../actions/types";
 import { saveCustomTextData } from "../../actions/common";
@@ -16,16 +16,16 @@ import CustomModal from "./CustomModal";
 const DataAccessName = React.forwardRef((props, ref) => {
    //初期ステートの定義
    const initialState = {
-      code:{ name: "code", value: "", ref: useRef(null), tabindex: 0 },
-      name:{ name: "name", value: "", ref: useRef(null), tabindex: 0 },
-      rows:{ name: "rows", value: [] },
-      modaldata:{ name: "modaldata", value: [] },
-      saveValue:{ name: "saveValue", value: "" },
+      code: { name: "code", value: "", ref: useRef(null), tabindex: 0 },
+      name: { name: "name", value: "", ref: useRef(null), tabindex: 0 },
+      rows: { name: "rows", value: [] },
+      modaldata: { name: "modaldata", value: [] },
+      saveValue: { name: "saveValue", value: "" },
    };
    const [inputdata, setInputdata] = useState(initialState);
    const setData = (name, value) => {
       inputdata[name].value = value;
-      setInputdata({ ...inputdata});
+      setInputdata({ ...inputdata });
    }
 
 
@@ -94,7 +94,7 @@ const DataAccessName = React.forwardRef((props, ref) => {
    //親から呼び出せるようにしたファンクション
    useImperativeHandle(ref, () => ({
       // `focus()`メソッドを作っている
-      focus: () => { 
+      focus: () => {
          inputdata.code.ref.current.focus();
       },
       getAlert() {
@@ -107,10 +107,8 @@ const DataAccessName = React.forwardRef((props, ref) => {
    }));
    return (
       <>
-         <div>
-            <label htmlFor={props.id}>{title}</label><CustomTextSimple id={props.id} value={props.value} name={props.name} onBlur={onBlur} onChange={onChange} ref={inputdata.code.ref} /><p className="dataaccessname-name">{inputdata.name.value}</p>
-            {/* <CustomModal modaldata={modaldata}/> */}
-         </div>
+         <CustomTextSimple id={props.id} value={props.value} name={props.name} onBlur={onBlur} onChange={onChange} ref={inputdata.code.ref} /><p className="dataaccessname-name">{inputdata.name.value}</p>
+         {/* <CustomModal modaldata={modaldata}/> */}
       </>
    );
 })

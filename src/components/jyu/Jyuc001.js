@@ -8,7 +8,7 @@ import CustomTextSimple from "../common/CustomTextSimple";
 import DataAccessName from "../common/DataAccessName";
 import CustomModal from "../common/CustomModal";
 import CustomDateSimple from "../common/CustomDateSimple";
-import { keyfocuscontrol,formatDateToText } from "../../util/util";
+import { keyfocuscontrol, formatDateToText } from "../../util/util";
 import jyus001 from "../../services/jyus001";
 import CustomSelect from "../common/CustomSelect";
 
@@ -82,7 +82,7 @@ const Jyuc001 = (props) => {
 
   //データ取得処理
   const _getDataById = () => {
-    
+
 
     inputdata.tokuicd.value = initialState.tokuicd.value;
     inputdata.shincd.value = initialState.shincd.value;
@@ -106,9 +106,9 @@ const Jyuc001 = (props) => {
         if (!!response.data && response.data.length > 0) {
           var row = response.data[0];
           inputdata.tokuicd.value = row.tokuicd;
-          if(!!inputdata.tokuicd.ref.current) inputdata.tokuicd.ref.current.getDataFromParent(inputdata.tokuicd.value)
+          if (!!inputdata.tokuicd.ref.current) inputdata.tokuicd.ref.current.getDataFromParent(inputdata.tokuicd.value)
           inputdata.shincd.value = row.shincd;
-          if(!!inputdata.shincd.ref.current) inputdata.shincd.ref.current.getDataFromParent(inputdata.shincd.value)
+          if (!!inputdata.shincd.ref.current) inputdata.shincd.ref.current.getDataFromParent(inputdata.shincd.value)
           inputdata.jyuchuymd.value = formatDateToText(row.jyuchuymd);
           inputdata.suryo.value = row.suryo;
           inputdata.situryo.value = row.situryo;
@@ -118,7 +118,7 @@ const Jyuc001 = (props) => {
 
           setInputdata({ ...inputdata });
 
-          
+
         }
 
       })
@@ -192,20 +192,17 @@ const Jyuc001 = (props) => {
         </div>
       ) : (
         <div>
-          <div><label htmlFor={inputdata.id.name}>受注番号</label><CustomTextSimple id={inputdata.id.name} value={inputdata.id.value} ref={inputdata.id.ref} onBlur={handleBlur} onChange={handleInputChange} /></div>
-          <DataAccessName msttype="tokui" id={inputdata.tokuicd.name} value={inputdata.tokuicd.value} ref={inputdata.tokuicd.ref} onBlur={handleBlur} onChange={handleInputChange} />
-          <DataAccessName msttype="shohin" id={inputdata.shincd.name} value={inputdata.shincd.value} ref={inputdata.shincd.ref} onBlur={handleBlur} onChange={handleInputChange} />
-          <div><label htmlFor={inputdata.jyuchuymd.name}>受注日</label><CustomDateSimple id={inputdata.jyuchuymd.name} value={inputdata.jyuchuymd.value} ref={inputdata.jyuchuymd.ref} onBlur={handleBlur} onChange={handleInputChange} /></div>
-          <div><label htmlFor={inputdata.suryo.name}>数量</label><CustomTextSimple classname="inputtype-number" id={inputdata.suryo.name} value={inputdata.suryo.value} ref={inputdata.suryo.ref} onBlur={handleBlur} onChange={handleInputChange} /></div>
-          <div><label htmlFor={inputdata.situryo.name}>質量</label><CustomTextSimple classname="inputtype-number" id={inputdata.situryo.name} value={inputdata.situryo.value} ref={inputdata.situryo.ref} onBlur={handleBlur} onChange={handleInputChange} /></div>
+          <div ><label class="title-label" htmlFor={inputdata.id.name}>受注番号</label><CustomTextSimple id={inputdata.id.name} value={inputdata.id.value} ref={inputdata.id.ref} onBlur={handleBlur} onChange={handleInputChange} /><CustomModal /></div>
+          <div ><label class="title-label" htmlFor={inputdata.tokuicd.name}>得意先</label><DataAccessName msttype="tokui" id={inputdata.tokuicd.name} value={inputdata.tokuicd.value} ref={inputdata.tokuicd.ref} onBlur={handleBlur} onChange={handleInputChange} /></div>
+          <div ><label class="title-label" htmlFor={inputdata.shincd.name}>商品</label><DataAccessName msttype="shohin" id={inputdata.shincd.name} value={inputdata.shincd.value} ref={inputdata.shincd.ref} onBlur={handleBlur} onChange={handleInputChange} /></div>
+          <div ><label class="title-label" htmlFor={inputdata.jyuchuymd.name}>受注日</label><CustomDateSimple id={inputdata.jyuchuymd.name} value={inputdata.jyuchuymd.value} ref={inputdata.jyuchuymd.ref} onBlur={handleBlur} onChange={handleInputChange} /></div>
+          <div ><label class="title-label" htmlFor={inputdata.suryo.name}>数量</label><CustomTextSimple classname="inputtype-number" id={inputdata.suryo.name} value={inputdata.suryo.value} ref={inputdata.suryo.ref} onBlur={handleBlur} onChange={handleInputChange} /></div>
+          <div ><label class="title-label" htmlFor={inputdata.situryo.name}>質量</label><CustomTextSimple classname="inputtype-number" id={inputdata.situryo.name} value={inputdata.situryo.value} ref={inputdata.situryo.ref} onBlur={handleBlur} onChange={handleInputChange} /></div>
           {/* <div><label htmlFor={inputdata.tani.name}>単位</label><CustomSelect id={inputdata.tani.name} value={inputdata.tani.value} ref={inputdata.tani.ref} onBlur={handleBlur} onChange={handleInputChange} data={[{value:"1",name:"CS"},{value:"2",name:"BL"},{value:"3",name:"PS"}]}/></div> */}
-          <div><label htmlFor={inputdata.tani.name}>単位</label><CustomTextSimple classname="inputtype-number" id={inputdata.tani.name} value={inputdata.tani.value} ref={inputdata.tani.ref} onBlur={handleBlur} onChange={handleInputChange}/></div>
-          <div><label htmlFor={inputdata.tanka.name}>単価</label><CustomTextSimple classname="inputtype-number" id={inputdata.tanka.name} value={inputdata.tanka.value} ref={inputdata.tanka.ref} onBlur={handleBlur} onChange={handleInputChange} /></div>
-          <div><label htmlFor={inputdata.kingaku.name}>金額</label><CustomTextSimple classname="inputtype-number" id={inputdata.kingaku.name} value={inputdata.kingaku.value} ref={inputdata.kingaku.ref} onBlur={handleBlur} onChange={handleInputChange} /></div>
+          <div ><label class="title-label" htmlFor={inputdata.tani.name}>単位</label><CustomTextSimple classname="inputtype-number" id={inputdata.tani.name} value={inputdata.tani.value} ref={inputdata.tani.ref} onBlur={handleBlur} onChange={handleInputChange} /></div>
+          <div ><label class="title-label" htmlFor={inputdata.tanka.name}>単価</label><CustomTextSimple classname="inputtype-number" id={inputdata.tanka.name} value={inputdata.tanka.value} ref={inputdata.tanka.ref} onBlur={handleBlur} onChange={handleInputChange} /></div>
+          <div ><label class="title-label" htmlFor={inputdata.kingaku.name}>金額</label><CustomTextSimple classname="inputtype-number" id={inputdata.kingaku.name} value={inputdata.kingaku.value} ref={inputdata.kingaku.ref} onBlur={handleBlur} onChange={handleInputChange} /></div>
 
-          <div>
-            <CustomModal />
-          </div>
           {/* <input ref={inputEl} type="text" value="aaa"/> */}
 
           <div>
