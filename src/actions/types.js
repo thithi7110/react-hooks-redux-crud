@@ -9,6 +9,7 @@ export const DELETE_ALL_TUTORIALS = "DELETE_ALL_TUTORIALS";
 
 
 export const SET_TEXT = "SET_TEXT";
+export const REMOVE_TEXT = "REMOVE_TEXT";
 
 
 //jyua001
@@ -19,3 +20,7 @@ export const JYUAT001_GET = "JYUAT001_GET";
 
 //dataaccessname
 export const DATAACCESSNAME_GET = "DATAACCESSNAME_GET";
+
+//message
+export const SETMESSAGE = "SETMESSAGE";
+export const GETMESSAGE = "GETMESSAGE";

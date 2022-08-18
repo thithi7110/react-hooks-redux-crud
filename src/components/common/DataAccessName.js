@@ -87,7 +87,7 @@ const DataAccessName = React.forwardRef((props, ref) => {
             .catch(e => {
                console.log(e);
             });
-      }
+      } 
    }
 
 
@@ -96,6 +96,9 @@ const DataAccessName = React.forwardRef((props, ref) => {
       // `focus()`メソッドを作っている
       focus: () => {
          inputdata.code.ref.current.focus();
+      },
+      select:() => {
+         inputdata.code.ref.current.select();
       },
       getAlert() {
          alert("getAlert from Child");
@@ -107,7 +110,7 @@ const DataAccessName = React.forwardRef((props, ref) => {
    }));
    return (
       <>
-         <CustomTextSimple id={props.id} value={props.value} name={props.name} onBlur={onBlur} onChange={onChange} ref={inputdata.code.ref} /><p className="dataaccessname-name">{inputdata.name.value}</p>
+         <CustomTextSimple require={props.require} id={props.id} value={props.value} name={props.name} onBlur={onBlur} onChange={onChange} ref={inputdata.code.ref} /><p className="dataaccessname-name">{inputdata.name.value}</p>
          {/* <CustomModal modaldata={modaldata}/> */}
       </>
    );

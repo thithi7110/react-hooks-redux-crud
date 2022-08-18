@@ -11,6 +11,7 @@ import CustomDateSimple from "../common/CustomDateSimple";
 import { keyfocuscontrol, formatDateToText } from "../../util/util";
 import jyus001 from "../../services/jyus001";
 import CustomSelect from "../common/CustomSelect";
+import { addMessage,removeMessage } from "../../actions/common";
 
 const Jyuc001 = (props) => {
 
@@ -170,12 +171,22 @@ const Jyuc001 = (props) => {
   }
   //キーダウンイベント
   const hadleKeyDown = (event) => {
-    keyfocuscontrol(document, event.keyCode, inputdata);
+    keyfocuscontrol(document, event, inputdata);
   }
-
   useEffect(() => {
     document.addEventListener("keydown", { inputdata: inputdata, handleEvent: hadleKeyDown }, false);
   }, []);
+  useEffect(() => {
+    //エラーチェック
+    //金額が0円の場合エラー
+    if(inputdata.kingaku.value == 0){
+      //エラーメッセージ登録
+      dispatch(addMessage("JYUC001_ERR001", "金額が0円です。"));
+    }else{
+      dispatch(removeMessage("JYUC001_ERR001"));
+    }
+
+  }, [inputdata.kingaku.value]);
 
 
   //子コンポーネントにinputdataの各オブジェクトごと渡した方がすっきりする気がするけど、
@@ -193,15 +204,15 @@ const Jyuc001 = (props) => {
       ) : (
         <div>
           <div ><label class="title-label" htmlFor={inputdata.id.name}>受注番号</label><CustomTextSimple id={inputdata.id.name} value={inputdata.id.value} ref={inputdata.id.ref} onBlur={handleBlur} onChange={handleInputChange} /><CustomModal /></div>
-          <div ><label class="title-label" htmlFor={inputdata.tokuicd.name}>得意先</label><DataAccessName msttype="tokui" id={inputdata.tokuicd.name} value={inputdata.tokuicd.value} ref={inputdata.tokuicd.ref} onBlur={handleBlur} onChange={handleInputChange} /></div>
+          <div ><label class="title-label" htmlFor={inputdata.tokuicd.name}>得意先</label><DataAccessName require msttype="tokui" id={inputdata.tokuicd.name} value={inputdata.tokuicd.value} ref={inputdata.tokuicd.ref} onBlur={handleBlur} onChange={handleInputChange} /></div>
           <div ><label class="title-label" htmlFor={inputdata.shincd.name}>商品</label><DataAccessName msttype="shohin" id={inputdata.shincd.name} value={inputdata.shincd.value} ref={inputdata.shincd.ref} onBlur={handleBlur} onChange={handleInputChange} /></div>
-          <div ><label class="title-label" htmlFor={inputdata.jyuchuymd.name}>受注日</label><CustomDateSimple id={inputdata.jyuchuymd.name} value={inputdata.jyuchuymd.value} ref={inputdata.jyuchuymd.ref} onBlur={handleBlur} onChange={handleInputChange} /></div>
-          <div ><label class="title-label" htmlFor={inputdata.suryo.name}>数量</label><CustomTextSimple classname="inputtype-number" id={inputdata.suryo.name} value={inputdata.suryo.value} ref={inputdata.suryo.ref} onBlur={handleBlur} onChange={handleInputChange} /></div>
+          <div ><label class="title-label" htmlFor={inputdata.jyuchuymd.name}>受注日</label><CustomDateSimple require id={inputdata.jyuchuymd.name} value={inputdata.jyuchuymd.value} ref={inputdata.jyuchuymd.ref} onBlur={handleBlur} onChange={handleInputChange} /></div>
+          <div ><label class="title-label" htmlFor={inputdata.suryo.name}>数量</label><CustomTextSimple require classname="inputtype-number" id={inputdata.suryo.name} value={inputdata.suryo.value} ref={inputdata.suryo.ref} onBlur={handleBlur} onChange={handleInputChange} /></div>
           <div ><label class="title-label" htmlFor={inputdata.situryo.name}>質量</label><CustomTextSimple classname="inputtype-number" id={inputdata.situryo.name} value={inputdata.situryo.value} ref={inputdata.situryo.ref} onBlur={handleBlur} onChange={handleInputChange} /></div>
           {/* <div><label htmlFor={inputdata.tani.name}>単位</label><CustomSelect id={inputdata.tani.name} value={inputdata.tani.value} ref={inputdata.tani.ref} onBlur={handleBlur} onChange={handleInputChange} data={[{value:"1",name:"CS"},{value:"2",name:"BL"},{value:"3",name:"PS"}]}/></div> */}
           <div ><label class="title-label" htmlFor={inputdata.tani.name}>単位</label><CustomTextSimple classname="inputtype-number" id={inputdata.tani.name} value={inputdata.tani.value} ref={inputdata.tani.ref} onBlur={handleBlur} onChange={handleInputChange} /></div>
-          <div ><label class="title-label" htmlFor={inputdata.tanka.name}>単価</label><CustomTextSimple classname="inputtype-number" id={inputdata.tanka.name} value={inputdata.tanka.value} ref={inputdata.tanka.ref} onBlur={handleBlur} onChange={handleInputChange} /></div>
-          <div ><label class="title-label" htmlFor={inputdata.kingaku.name}>金額</label><CustomTextSimple classname="inputtype-number" id={inputdata.kingaku.name} value={inputdata.kingaku.value} ref={inputdata.kingaku.ref} onBlur={handleBlur} onChange={handleInputChange} /></div>
+          <div ><label class="title-label" htmlFor={inputdata.tanka.name}>単価</label><CustomTextSimple require classname="inputtype-number" id={inputdata.tanka.name} value={inputdata.tanka.value} ref={inputdata.tanka.ref} onBlur={handleBlur} onChange={handleInputChange} /></div>
+          <div ><label class="title-label" htmlFor={inputdata.kingaku.name}>金額</label><CustomTextSimple require classname="inputtype-number" id={inputdata.kingaku.name} value={inputdata.kingaku.value} ref={inputdata.kingaku.ref} onBlur={handleBlur} onChange={handleInputChange} /></div>
 
           {/* <input ref={inputEl} type="text" value="aaa"/> */}
 

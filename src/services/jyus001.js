@@ -27,6 +27,9 @@ const removeAll = () => {
 const findById = id => {
   return http.get(`/jyu?id=${id}`);
 };
+const login = (data) => {
+  return http.post(`/login`,data);
+};
 
 const jyus001 = {
   getAll,
@@ -35,7 +38,8 @@ const jyus001 = {
   update,
   remove,
   removeAll,
-  findById
+  findById,
+  login
 };
 
 export default jyus001;
